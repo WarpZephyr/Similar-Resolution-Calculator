@@ -12,7 +12,7 @@ one-by-one using the aspect ratio like:
 Over and over until it gets to your specified Iterations, each number would be a height, it checks to see if there's a valid
 width to go with it, which resolutions are valid? Any within the determined aspect ratio that aren't decimal
 
-The default for iterations is your Height * 2
+The default for "Iterations" is your inputted Height * 2
 
 The next input box "Divisible By" is covered in the next section
 
