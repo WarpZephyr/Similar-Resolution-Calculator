@@ -3,7 +3,7 @@ This calculator finds similar resolutions to the one inputted using the inputted
 
 # How to use it?
 You input the Width and Height of your resolution, the other two options are optional and will be defaulted if not chosen,
-You can use "Iterations" to specify how far it sould search, you might want to set this number to your Height, as it searches
+You can use "Iterations" to specify how far it should search, you might want to set this number to your Height, as it searches
 one-by-one using the aspect ratio like:
 
 1 * aspect ratio = width
