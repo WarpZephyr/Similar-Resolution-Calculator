@@ -22,7 +22,7 @@ The next input box "Divisible By" is covered in the next section
 
 # How do I filter results?
 "Divisible By" will only show you results divisible by your specified number, the number 1 will be used by default or in the case you input
-an invalid number like 0,
+an invalid number such as 0,
 
 So if you only wanted resolutions in the tens, like 480, 720, 1080, 1440, it'll only show resolutions in the tens if you put 10 in "Divisible By"
 If you have any questions please feel free to ask
