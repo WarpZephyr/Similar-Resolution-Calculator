@@ -15,10 +15,10 @@
             Exit Sub
         End If
 
-        'If iterations is empty use Width as it's number
+        'If iterations is empty use Height as it's number
         If DataIterations.Text = "" And IsNumeric(DataWidth.Text) = True Then
-            DataIterations.Text = DataWidth.Text
-            DataFeedback.Text = "Iterations was empty, using Width as value"
+            DataIterations.Text = DataHeight.Text
+            DataFeedback.Text = "Iterations was empty, using Height as value"
         End If
 
         'If Divisble By is empty, use 1 as it's number
