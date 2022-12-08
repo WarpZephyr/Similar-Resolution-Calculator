@@ -36,7 +36,8 @@ To get started:
 You should now see the designer, if you see nothing once you do, click the "Similar Resolution Calculator" in the solution explorer, then select the "SimilarResCalc.vb" file and open it
 
 The designer is where the UI is made, do not try editing the UI through the "SimilarResCalc.Designer.vb" file directly  
-Coding is done in the "SimilarResCalc.vb" file, if you do not know how to access the code, right-click the form and select "View Code"  
+Coding is done in the "SimilarResCalc.vb" file, if you do not know how to access the code, right-click the form and select "View Code"
+
 No other files need to be changed as they are updated automatically
 
 # How do I just build the code?
