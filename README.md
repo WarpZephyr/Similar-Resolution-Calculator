@@ -42,7 +42,7 @@ Coding is done in the "SimilarResCalc.vb" file, if you do not know how to access
 No other files need to be changed as they are updated automatically
 
 # How do I just build the code?
-I'm not quite sure how to do that without Visual Studio as I haven't learned that yet, I will update this once I do,  
+I'm not quite sure how to do that without Visual Studio as I haven't learned that yet, I will update this once I do  
 In the meanwhile ask on online, or just follow the same instructions for modifying the code yourself
 
 If you have any questions please feel free to ask  
