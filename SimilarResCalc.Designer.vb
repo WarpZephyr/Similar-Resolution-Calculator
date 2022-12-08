@@ -29,13 +29,13 @@ Partial Class SimilarResCalc
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataFeedback = New System.Windows.Forms.Label()
         Me.DataInputBox = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DataDivisible = New System.Windows.Forms.TextBox()
         Me.DataIterations = New System.Windows.Forms.TextBox()
         Me.label3 = New System.Windows.Forms.Label()
         Me.DataClear = New System.Windows.Forms.Button()
         Me.DataCalc = New System.Windows.Forms.Button()
         Me.DataInfoBox = New System.Windows.Forms.GroupBox()
-        Me.DataDivisible = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.DataInputBox.SuspendLayout()
         Me.DataInfoBox.SuspendLayout()
         Me.SuspendLayout()
@@ -122,6 +122,26 @@ Partial Class SimilarResCalc
         Me.DataInputBox.TabStop = False
         Me.DataInputBox.Text = "Input"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(13, 99)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(64, 13)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Divisible By:"
+        '
+        'DataDivisible
+        '
+        Me.DataDivisible.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.DataDivisible.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.DataDivisible.ForeColor = System.Drawing.Color.White
+        Me.DataDivisible.Location = New System.Drawing.Point(83, 97)
+        Me.DataDivisible.Name = "DataDivisible"
+        Me.DataDivisible.Size = New System.Drawing.Size(100, 20)
+        Me.DataDivisible.TabIndex = 15
+        '
         'DataIterations
         '
         Me.DataIterations.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
@@ -177,26 +197,6 @@ Partial Class SimilarResCalc
         Me.DataInfoBox.TabStop = False
         Me.DataInfoBox.Text = "Data"
         '
-        'DataDivisible
-        '
-        Me.DataDivisible.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.DataDivisible.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.DataDivisible.ForeColor = System.Drawing.Color.White
-        Me.DataDivisible.Location = New System.Drawing.Point(83, 97)
-        Me.DataDivisible.Name = "DataDivisible"
-        Me.DataDivisible.Size = New System.Drawing.Size(100, 20)
-        Me.DataDivisible.TabIndex = 15
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(13, 99)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(64, 13)
-        Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Divisible By:"
-        '
         'SimilarResCalc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -207,6 +207,8 @@ Partial Class SimilarResCalc
         Me.Controls.Add(Me.DataInputBox)
         Me.Controls.Add(Me.DataOutputBox)
         Me.ForeColor = System.Drawing.Color.White
+        Me.MaximumSize = New System.Drawing.Size(450, 310)
+        Me.MinimumSize = New System.Drawing.Size(450, 310)
         Me.Name = "SimilarResCalc"
         Me.Text = "Similar Resolution Calculator"
         Me.DataInputBox.ResumeLayout(False)

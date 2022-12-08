@@ -1,63 +1,76 @@
 ﻿Public Class SimilarResCalc
-    'Return true if value has decimal, use divisible for Divisible By filter
-    Private Function ResFilter(ByVal value As Double, ByVal divisible As Integer)
-        If divisible = 0 Then
-            divisible = 1
-        End If
+    'Function to check if dividing will give us a decimal
+    Private Function ResFilter(value As Double, divisible As Integer)
         If value Mod divisible = 0 Then
             Return False
         End If
         Return True
     End Function
 
-    'When the resolution calculate button is pressed
+    'When the Calculate button is pressed
     Private Sub DataCalc_Click(sender As Object, e As EventArgs) Handles DataCalc.Click
-        On Error GoTo handler
-        Dim resWidth As Integer = Val(DataWidth.Text)
-        Dim resHeight As Integer = Val(DataHeight.Text)
-        Dim calcIterations As Integer = Val(DataIterations.Text)
-        Dim divisbleFilter As Integer = Val(DataDivisible.Text)
-
-        'Check to see if the resolution textboxes are empty
+        'Check if the Width and Height textboxes are empty
         If DataWidth.Text = "" Or DataHeight.Text = "" Then
-            DataFeedback.Text = "Please enter values"
+            DataFeedback.Text = "Please enter values for Width and/or Height."
             Exit Sub
         End If
 
-        'If Iterations is empty just use the resolution width multipled by 2
-        If DataIterations.Text = "" Then
-            calcIterations = resWidth * 2
-            DataIterations.Text = calcIterations
+        'If iterations is empty use Width as it's number
+        If DataIterations.Text = "" And IsNumeric(DataWidth.Text) = True Then
+            DataIterations.Text = DataWidth.Text
+            DataFeedback.Text = "Iterations was empty, using Width as value"
         End If
 
-        'Show visually that the Divisible By box changes if empty or has a 0
-        If divisbleFilter = 0 Then
-            DataDivisible.Text = 1
+        'If Divisble By is empty, use 1 as it's number
+        If DataDivisible.Text = "" Then
+            DataDivisible.Text = "1"
+            DataFeedback.Text = "Divisible By was empty, using 1 as value"
         End If
 
-        'Check to see if input is not numeric or if resHeight is using 0
-        If IsNumeric(DataWidth.Text) = False Or IsNumeric(DataHeight.Text) = False Or resHeight = 0 Then
-            DataFeedback.Text = "Please only use valid numbers"
+        'Check if input for Height textbox is 0
+        If DataHeight.Text = "0" Then
+            DataFeedback.Text = "Numbers cannot be divided by 0, please choose a different number for Height."
             Exit Sub
         End If
 
-        'Placed here to prevent divide by 0
+        'Check if input for Divisible By textbox is 0
+        If DataDivisible.Text = "0" Then
+            DataFeedback.Text = "Numbers cannot be divided by 0, please choose a different number for Divisible By."
+            Exit Sub
+        End If
+
+        'Check if input is not numeric for textboxes
+        If IsNumeric(DataWidth.Text) = False Or IsNumeric(DataHeight.Text) = False Or IsNumeric(DataIterations.Text) = False Or IsNumeric(DataDivisible.Text) = False Then
+            DataFeedback.Text = "Please only use valid numbers in textboxes."
+            Exit Sub
+        End If
+
+        'Assign textbox values to variables
+        Dim resWidth As Integer = DataWidth.Text
+        Dim resHeight As Integer = DataHeight.Text
+        Dim calcIterations As Integer = DataIterations.Text
+        Dim divisbleFilter As Integer = DataDivisible.Text
         Dim aspectRatio As Double = resWidth / resHeight
 
-        'Find the resolutions for this aspect ratio
-        Dim resCount As Integer
-        For index = 1 To calcIterations
-            Dim newResHeight As Double = index
-            Dim newResWidth As Double = newResHeight * aspectRatio
-            If ResFilter(newResWidth, divisbleFilter) = False And ResFilter(newResHeight, divisbleFilter) = False Then
-                resCount += 1
-                DataOutputBox.Items.Add($"{newResWidth} x {newResHeight}")
+        'Error checking to prevent overflow
+        Try
+            'Find the resolutions for this aspect ratio
+            Dim resCount As Integer
+            For index = 1 To calcIterations
+                Dim newResHeight As Double = index
+                Dim newResWidth As Double = newResHeight * aspectRatio
+                If ResFilter(newResWidth, divisbleFilter) = False And ResFilter(newResHeight, divisbleFilter) = False Then
+                    resCount += 1
+                    DataOutputBox.Items.Add($"{newResWidth} x {newResHeight}")
+                End If
+            Next
+            DataFeedback.Text = $"{resCount} resolutions found"
+            If calcIterations < resWidth Then
+                DataFeedback.Text += ", try making iterations bigger, such as the value Width is set to."
             End If
-        Next
-        DataFeedback.Text = $"{resCount} resolutions found"
-        Exit Sub
-handler:
-        DataFeedback.Text = "An error occurred, please try again"
+        Catch ex As Exception
+            DataFeedback.Text = "An error occurred, please try again."
+        End Try
     End Sub
 
     'Clear the output box, someone might want it to not clear every time they do a new calculation
